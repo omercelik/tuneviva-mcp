@@ -1,0 +1,125 @@
+{
+  "cloudEndpoint": "https://tuneviva.com/mcp",
+  "description": "Find sheet music, look up practice scores, and learn how to scan scores in the browser using TuneViva.",
+  "identifier": "tuneviva-mcp",
+  "name": "tuneviva",
+  "prompts": [],
+  "resources": [],
+  "tools": [
+    {
+      "name": "get_practice_score",
+      "description": "Get metadata, MusicXML link and practice link for a supported TuneViva score ID.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Numeric score ID from a TuneViva score URL"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "musicxml": {
+            "type": "string"
+          },
+          "score_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "scan_sheet_music",
+      "description": "Get instructions and link for browser-local printed sheet music recognition. This tool does not process or upload images.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "musicxml": {
+            "type": "string"
+          },
+          "score_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_sheet_music",
+      "description": "Create a TuneViva search link for a composer or piece; inspect results and confirm the arrangement.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Composer or work title, 1 to 200 characters"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "musicxml": {
+            "type": "string"
+          },
+          "score_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "version": "1.0.0"
+}
